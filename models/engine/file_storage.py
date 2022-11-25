@@ -20,7 +20,7 @@ class FileStorage:
     def new(self, instance):
         """ add in __objects the obj with key <obj class name>.id """
         if instance:
-            key = "{}.{}".format(obj.__class__.__name__, instance.id)
+            key = "{}.{}".format(instance.__class__.__name__, instance.id)
             self.__objects[key] = instance
 
     def save(self):
