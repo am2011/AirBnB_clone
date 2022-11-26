@@ -49,6 +49,3 @@ class FileStorage:
                     class_name = obj_key[0]
                     # add in __objects the key, value
                     self.new(eval("{}".format(class_name))(**value))
-
-storage = FileStorage()
-storage.reload()
