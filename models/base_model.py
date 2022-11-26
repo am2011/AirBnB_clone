@@ -4,6 +4,7 @@ import uuid
 from datetime import datetime
 
 
+
 now = datetime.now()
 class BaseModel:
     "Create the BaseMdel Class"

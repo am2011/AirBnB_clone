@@ -4,6 +4,7 @@
 """ the storage engine """
 import json
 from models.base_model import BaseModel
+import os
 
 
 
@@ -38,7 +39,7 @@ class FileStorage:
         (__file_path) exists, otherwise, do nothing. If the file doesn’t
         exist, no exception should be raised) """
         # excutes only if file exists
-        if isfile(FileStorage.__file_path):
+        if os.path.isfile(FileStorage.__file_path):
             with open(self.__file_path, 'r') as f:
                 des_json = json.load(f)
                 for key, value in des_json.items():
@@ -48,3 +49,6 @@ class FileStorage:
                     class_name = obj_key[0]
                     # add in __objects the key, value
                     self.new(eval("{}".format(class_name))(**value))
+
+storage = FileStorage()
+storage.reload()
