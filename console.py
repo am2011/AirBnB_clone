@@ -1,4 +1,4 @@
-#############!/usr/bin/python3
+#!/usr/bin/python3
 """This file contains the entry point of the command interpreter"""
 import cmd
 from models.base_model import BaseModel
