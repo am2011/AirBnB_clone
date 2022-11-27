@@ -4,6 +4,12 @@
 """ the storage engine """
 import json
 from models.base_model import BaseModel
+from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 import os
 
 
@@ -32,7 +38,7 @@ class FileStorage:
             for value in all_dict.values():
                 key = "{}.{}".format(value.__class__.__name__, value.id)
                 s_dict[key] = value.to_dict()
-                json.dump(s_dict, f)
+            json.dump(s_dict, f)
 
     def reload(self):
         """ deserializes the JSON file to __objects (only if the JSON file

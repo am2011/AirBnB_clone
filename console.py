@@ -2,11 +2,18 @@
 """This file contains the entry point of the command interpreter"""
 import cmd
 from models.base_model import BaseModel
-from models.engine.file_storage import storage
+from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models import storage
 
 
 
 class HBNBCommand(cmd.Cmd):
+    """command interpreter class"""
     prompt = "(hbnb) "
     file = None
     #new code added
@@ -25,14 +32,15 @@ class HBNBCommand(cmd.Cmd):
         print(end="")
     
     def do_create(self, arg):
-        """Creates a new instance of BaseModel"""
+        """Creates a new instance.\n"""
 
         if not arg:
             print("** class name missing")
-        elif arg != "BaseModel":
+        elif arg not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
-            new_model = BaseModel()
+            new_model = eval(arg)()
+            storage.new(new_model)
             storage.save()
             print(new_model.id)
     
@@ -71,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg_list:
             print("** class name missing **")
             return None
-        elif (arg_list[0] not in HBNBCommand.__calsses):
+        elif (arg_list[0] not in HBNBCommand.__classes):
             print("** class doesn't exist **")
             return None
         elif len(arg_list) == 1:
@@ -106,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
                 obj_list.append(value.__str__())
             print(obj_list)
 
-        elif (arg_list[0] not in HBNBCommand.__calsses):
+        elif (arg_list[0] not in HBNBCommand.__classes):
             print("** class doesn't exist **")
 
         else:
@@ -125,7 +133,7 @@ class HBNBCommand(cmd.Cmd):
         arg_list = arg.split(" ")
         if len(arg_list) == 0:
             print("** class name missing **")
-        elif (arg_list[0] not in HBNBCommand.__calsses):
+        elif (arg_list[0] not in HBNBCommand.__classes):
             print("** class doesn't exist **")
         elif len(arg_list) == 1:
             print("** instance id missing **")
