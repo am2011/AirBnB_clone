@@ -21,12 +21,18 @@ class HBNBCommand(cmd.Cmd):
         ]
 
     def do_EOF(self, arg):
-        """Quit command to exit the program"""
+        """Quit command to exit the program
+
+        arg(list): list of all instances at __objects
+        """
         print("")
         return True
 
     def do_quit(self, arg):
-        """Quit command to exit the program\n"""
+        """Quit command to exit the program
+
+            arg(list): list of all instances at __objects
+        """
         return True
 
     def emptyline(self):
@@ -34,7 +40,10 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        """Creates a new instance of BaseModel\n"""
+        """Creates a new instance of BaseModel
+
+            arg(list): list of all instances at __objects
+        """
 
         if not arg:
             print("** class name missing")
@@ -48,7 +57,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """Prints the string representaton of
-            an instance based on the class name and id\n"""
+            an instance based on the class name and id
+
+            arg(list): list of all instances at __objects    
+        """
         try:
             if not arg:
                 raise SyntaxError
@@ -77,7 +89,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """Deletes the instance that has
-            the cmd arg (class name and id)\n"""
+            the cmd arg (class name and id)
+
+            arg(list): list of all instances at __objects
+        """
         arg_list = arg.split(" ")
         if not arg:
             print("** class name missing **")
@@ -96,7 +111,10 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     def do_count(self, arg):
-        """ print the count of instances of a class \n"""
+        """ print the count of instances of a class
+
+            arg(list): list of all instances at __objects
+        """
         count = 0
         for key in storage.all().keys():
             if arg in key:
@@ -105,7 +123,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Prints all string repr. of
-        all instances based or not on the class name\n"""
+        all instances based or not on the class name
+
+            arg(list): list of all instances at __objects
+        """
         arg_list = arg.split(" ")
         obj_list = []
 
@@ -123,7 +144,10 @@ class HBNBCommand(cmd.Cmd):
             print(obj_list)
 
     def do_update(self, arg):
-        """ Updates an instance based on the class name and id \n"""
+        """ Updates an instance based on the class name and id
+
+            arg(list): list of all instances at __objects
+        """
         arg_list = arg.split(" ")
         if not arg:
             print("** class name missing **")
