@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-
-
 """ the storage engine """
 import json
+import os
 from models.base_model import BaseModel
 from models.user import User
 from models.amenity import Amenity
@@ -10,8 +9,6 @@ from models.city import City
 from models.place import Place
 from models.review import Review
 from models.state import State
-import os
-
 
 
 class FileStorage:
@@ -31,10 +28,9 @@ class FileStorage:
             self.__objects[key] = instance
 
     def save(self):
-        """ serializes __objects to the JSON file  """
         s_dict = {}
         all_dict = FileStorage.__objects
-        with open(FileStorage.__file_path, 'w') as f:
+        with open(FileStorage.__file_path, 'w', encoding="utf-8") as f:
             for value in all_dict.values():
                 key = "{}.{}".format(value.__class__.__name__, value.id)
                 s_dict[key] = value.to_dict()
