@@ -5,14 +5,14 @@ from datetime import datetime
 import models
 
 
-now = datetime.now()
 class BaseModel:
     "Create the BaseMdel Class"
     def __init__(self, *args, **kwargs):
         """Initilize public instance attributes
-        
+
             args(list): Empty list
-            kwargs(dict): dictionary that contain key/value of the attirbutes
+            kwargs(dict): dictionary that
+            contain key/value of the attirbutes
         """
         # **kwargs
         if len(kwargs) != 0:
@@ -38,15 +38,16 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """Returns dictionary containing all keys/values of the instance:"""
+        """Returns dictionary containing
+        all keys/values of the instance:"""
         my_dict = self.__dict__.copy()
         my_dict['__class__'] = str(type(self).__name__)
         my_dict['created_at'] = self.created_at.isoformat()
         my_dict['updated_at'] = self.updated_at.isoformat()
-        my_dict.pop("_sa_instance_state", None)
         return my_dict
 
     def __str__(self):
-        """Return Representation of the 
+        """Return Representation of the
             Ojbect [<class name>] (<self.id>) <self.__dict__>"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        c = self.__dict__.copy()
+        return "[{}] ({}) {}".format(type(self)_.__name__, self.id, c)

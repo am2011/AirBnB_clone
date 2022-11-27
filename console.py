@@ -16,22 +16,25 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     file = None
 
-    __classes = ["BaseModel", "City", "State", "User", "Place", "Review", "Amenity"]
+    __classes = [
+            "BaseModel", "City", "State", "User", "Place", "Review", "Amenity"
+        ]
 
     def do_EOF(self, arg):
-        """Quit command to exit the program\n"""
+        """Quit command to exit the program"""
+        print("")
         return True
-    
+
     def do_quit(self, arg):
         """Quit command to exit the program\n"""
         return True
-    
+
     def emptyline(self):
         """ENTER will print emptyline.\n"""
-        print(end="")
+        pass
 
     def do_create(self, arg):
-        """Creates a new instance of BaseModel"""
+        """Creates a new instance of BaseModel\n"""
 
         if not arg:
             print("** class name missing")
@@ -44,7 +47,8 @@ class HBNBCommand(cmd.Cmd):
             new_model.save()
 
     def do_show(self, arg):
-        """Prints the string representaton of an instance based on the class name and id\n"""
+        """Prints the string representaton of
+            an instance based on the class name and id\n"""
         try:
             if not arg:
                 raise SyntaxError
@@ -70,9 +74,10 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
         except KeyError:
             print("** no instance found **")
-    
+
     def do_destroy(self, arg):
-        """Deletes the instance that has the cmd arg (class name and id)\n"""
+        """Deletes the instance that has
+            the cmd arg (class name and id)\n"""
         arg_list = arg.split(" ")
         if not arg:
             print("** class name missing **")
@@ -140,5 +145,5 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     HBNBCommand().cmdloop()
