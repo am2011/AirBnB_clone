@@ -51,7 +51,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             new_model = eval(arg + "()")
-            storage.new(new_model)
             print(new_model.id)
             new_model.save()
 
