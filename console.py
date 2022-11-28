@@ -46,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
         """
 
         if not arg:
-            print("** class name missing")
+            print("** class name missing **")
         elif arg not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
@@ -58,7 +58,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints the string representaton of
             an instance based on the class name and id
 
-            arg(list): list of all instances at __objects    
+            arg(list): list of all instances at __objects
         """
         try:
             if not arg:
