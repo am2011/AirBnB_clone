@@ -29,12 +29,15 @@ class BaseModel:
             self.id = str(id)
             self.created_at = datetime.utcnow()
             self.updated_at = self.created_at
+            models.storage.new(self)
+
+
 
     def save(self):
         """updates the public instance attribut
             update_at with the current datetime"""
         self.updated_at = datetime.utcnow()
-        models.storage.new(self)
+    
         models.storage.save()
 
     def to_dict(self):
@@ -50,4 +53,4 @@ class BaseModel:
         """Return Representation of the
             Ojbect [<class name>] (<self.id>) <self.__dict__>"""
         c = self.__dict__.copy()
-        return "[{}] ({}) {}".format(type(self)_.__name__, self.id, c)
+        return "[{}] ({}) {}".format(type(self).__name__, self.id, c)
