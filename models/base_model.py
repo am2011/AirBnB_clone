@@ -50,4 +50,4 @@ class BaseModel:
         """Return Representation of the
             Ojbect [<class name>] (<self.id>) <self.__dict__>"""
         c = self.__dict__.copy()
-        return "[{}] ({}) {}".format(type(self)_.__name__, self.id, c)
+        return "[{}] ({}) {}".format(type(self).__name__, self.id, c)
