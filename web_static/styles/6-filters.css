@@ -65,6 +65,7 @@
 
 .container .filters div .popover
 {
+    display: none;
     background-color: #fafafa;
     width: 100%;
     border: #DDDDDD 1px solid;
