@@ -1,0 +1,11 @@
+header{
+    background-color: #ffffff;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #CCCCCC;
+}
+.logo{
+    content: url(../images/logo.png);
+    margin: auto 20px;
+    height: inherit;
+}
